@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Centro de Diseño Dental SM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+/* ================= FONDO ================= */
+
+body{
+  position:relative;
+  color:#fff;
+  line-height:1.6;
+  scroll-behavior:smooth;
+  background:url('1d43fbc6dd7772bf7b6b85b80660943b.jpg') center/cover no-repeat fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-color:rgba(0,0,0,0.5);
+  z-index:-1;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(8px);
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #fff;
+  position:sticky;
+  top:0;
+  z-index:10;
+  transition:background .3s;
+}
+
+header.scrolled{background:rgba(0,0,0,0.9);}
+
+header h1{font-size:1.8rem;font-weight:700;color:#fff;}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 15px;
+  font-weight:600;
+  transition:color .3s;
+}
+
+nav a:hover{color:#ccc;}
+
+/* ================= HERO ================= */
+
+.hero{
+  height:70vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:url("HHHHH.png") center/cover no-repeat;
+  animation:fadeIn 2s ease-in-out;
+}
+
+.hero h2{
+  background:rgba(0,0,0,0.6);
+  padding:30px 40px;
+  border-radius:12px;
+  font-size:2.5rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+
+/* ================= SECCIONES ================= */
+
+section{
+  padding:50px 20px;
+  max-width:1200px;
+  margin:auto;
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 1s ease,transform 1s ease;
+}
+
+section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+  font-size:2.2rem;
+  font-weight:700;
+  color:#fff;
+}
+
+/* ================= GRID Y CARDS ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:rgba(0,0,0,0.6);
+  border:1px solid #fff;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.3);
+  overflow:hidden;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:0 8px 20px rgba(0,0,0,.5);
+}
+
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.card .content{padding:20px;}
+
+.card h3{margin-bottom:10px;font-size:1.3rem;color:#fff;}
+
+/* ================= VIDEO VERTICAL ================= */
+
+.video-vertical{
+  position:relative;
+  width:100%;
+  padding-top:177.77%;
+  overflow:hidden;
+  background:#000;
+}
+
+.video-vertical video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ================= BOTONES ================= */
+
+.btn{
+  display:inline-block;
+  background:transparent;
+  color:#fff;
+  border:2px solid #fff;
+  padding:15px 30px;
+  border-radius:40px;
+  text-decoration:none;
+  font-size:1.1rem;
+  font-weight:600;
+  transition:.3s;
+  margin:5px;
+}
+
+.btn:hover{
+  background:#fff;
+  color:#000;
+  transform:scale(1.05);
+}
+
+/* ================= MAPA ================= */
+
+iframe.mapa{
+  width:100%;
+  height:300px;
+  border:0;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  margin-top:30px;
+  border-top:1px solid #fff;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  z-index:1000;
+}
+
+/* ================= ANIMACIÓN ================= */
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+	/* ===== MODAL SERVICIOS ===== */
+
+.modal{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  position:relative;
+  background:rgba(0,0,0,0.9);
+  padding:40px;
+  border-radius:12px;
+  max-width:600px;
+  text-align:center;
+  border:1px solid #fff;
+}
+
+.close{
+  position:absolute;
+  right:20px;
+  top:15px;
+  font-size:28px;
+  cursor:pointer;
+}
+	
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+<h1>Centro de Diseño Dental SM.</h1>
+
+<nav>
+<a href="#nosotros">Nosotros</a>
+<a href="#servicios">Servicios</a>
+<a href="#antes-despues">Antes y Después</a>
+<a href="#galeria">Galería</a>
+<a href="#sedes">Sedes</a>
+<a href="#testimonios">Testimonios</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</header>
+
+<!-- ================= HERO ================= -->
+
+<div class="hero">
+<div class="hero-content">
+
+<h2>Transformamos sonrisas con estándares internacionales</h2>
+
+<a class="btn" href="https://wa.me/573132725437">Agendar por WhatsApp</a>
+<a class="btn" href="https://wa.me/573132725437">Book Appointment</a>
+
+</div>
+</div>
+
+<!-- ================= NOSOTROS ================= -->
+
+<section id="nosotros">
+<h2 class="section-title">Sobre Nosotros</h2>
+
+<p style="text-align:center;">
+Tu sonrisa es tu mejor carta de presentación...
+</p>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+
+<section id="servicios">
+<h2 class="section-title">Nuestros Servicios</h2>
+
+<div class="grid">
+
+<div class="card service-card" data-service="ortodoncia">
+<img src="ORTODONCIAA.jpeg">
+<div class="content">
+<h3>Ortodoncia Estética</h3>
+<p>Corrige la posición dental de forma discreta.</p>
+</div>
+</div>
+
+<div class="card service-card" data-service="blanqueamiento">
+<img src="Untitled.jfif">
+<div class="content">
+<h3>Blanqueamiento Dental</h3>
+<p>Recupera el blanco natural de tu sonrisa.</p>
+</div>
+</div>
+	
+<div class="card service-card" data-service="blanqueamiento">
+<img src="reha.png">
+<div class="content">
+<h3>Rehabilitación Dental</h3>
+<p>Si perdiste una o varias piezas dentales, rehabilitamos tu sonrisa.</p>
+</div>
+</div>
+	
+<div class="card service-card" data-service="blanqueamiento">
+<img src="f424831780d1749bc434476abeb1fa98.jpg">
+<div class="content">
+<h3>Consulta General</h3>
+<p>Tienes molestias como dolor o una pieza dental suelta.</p>
+</div>
+</div>
+	
+<div class="card service-card" data-service="diseno">
+<img src="dis cr.png">
+<div class="content">
+<h3>Diseño de Sonrisa</h3>
+<p>Transformación estética completa.</p>
+</div>
+</div>
+
+</div>
+</section>
+	<!-- MODAL SERVICIOS -->
+
+<div id="serviceModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalText"></p>
+
+<a class="btn" href="https://wa.me/573132725437" target="_blank">
+Consultar por WhatsApp
+</a>
+
+</div>
+</div>
+
+<!-- ================= ANTES Y DESPUÉS ================= -->
+
+<section id="antes-despues">
+<h2 class="section-title">Antes y Después</h2>
+
+<div class="grid">
+<div class="card"><img src="WhatsApp Image 2026-02-15 at 4.08.39 PM (6).jpeg"></div>
+<div class="card"><img src="WhatsApp Image 2026-02-15 at 4.08.39 PM (5).jpeg"></div>
+<div class="card"><img src="WhatsApp Image 2026-02-15 at 4.08.39 PM (4).jpeg"></div>
+</div>
+</section>
+<!-- ================= TESTIMONIOS ================= -->
+	<section id="testimonios">
+  <h2 class="section-title">Testimonios en Video</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="video-vertical">
+        <video controls>
+          <source src="122800_compressed.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="card">
+      <div class="video-vertical">
+        <video controls>
+          <source src="testimonio 1.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="card">
+      <div class="video-vertical">
+        <video controls>
+          <source src="testimonio 1.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= GALERÍA ================= -->
+
+<section id="galeria">
+<h2 class="section-title">Galería de Diseños de Sonrisa</h2>
+
+<div class="grid">
+<div class="card"><img src="aea114bae1af81eb6b2b3ee502239ddf.jpg"></div>
+<div class="card"><img src="WhatsApp Image 2025-08-28 at 4.17.05 PM.jpeg"></div>
+<div class="card"><img src="dis cr.png"></div>
+<div class="card"><img src="DC DIS.png"></div>
+<div class="card"><img src="DC AX.png"></div>
+<div class="card"><img src="GGDC.png"></div>
+</div>
+</section>
+
+<!-- ================= SEDES ================= -->
+
+<section id="sedes">
+<h2 class="section-title">Nuestras Sedes</h2>
+
+<div class="grid">
+
+<div>
+<h3 style="text-align:center;">Sede 1 - Bogotá Bosa</h3>
+<iframe class="mapa" src="https://www.google.com/maps?q=4.6205528,-74.1860562&z=19&hl=es&output=embed"></iframe>
+</div>
+
+<div>
+<h3 style="text-align:center;">Sede 2 - Bogotá Castilla</h3>
+<iframe class="mapa" src="https://www.google.com/maps?q=4.6431057,-74.1358115&z=20&hl=es&output=embed"></iframe>
+</div>
+
+</div>
+</section>
+	
+	<!-- NUEVA SECCIÓN FORMULARIO DE CITA -->
+
+	
+	<section id="contacto" style="text-align:center;">
+
+<h2 class="section-title">Agenda tu Cita</h2>
+
+<div class="contact-info" style="max-width:600px;margin:auto;margin-bottom:25px;">
+<p><strong>WhatsApp:</strong> +57 313 272 5437</p>
+<p><strong>Email:</strong> contacto@clinicadental.com</p>
+<p><strong>Horario:</strong> Lunes a Sábado 8:00 AM — 6:00 PM</p>
+
+<p>Atendemos pacientes internacionales ✈️</p>
+<p>Asesoría personalizada • Respuesta rápida • Atención VIP</p>
+<p>Protocolos de bioseguridad certificados</p>
+</div>
+
+<form id="formulario" style="
+max-width:650px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+">
+
+<input type="text" id="iname" placeholder="Nombre Completo" required
+style="padding:12px;border-radius:8px;border:none;">
+
+<input type="email" id="iemail" placeholder="Correo/Email" required
+style="padding:12px;border-radius:8px;border:none;">
+
+<input type="tel" id="iphone" placeholder="Numero de WhatsApp" required
+style="padding:12px;border-radius:8px;border:none;">
+
+<select id="itreatment" required
+style="padding:12px;border-radius:8px;border:none;">
+  <option value="">Treatmento de Interes</option>
+  <option>Implante Dental</option>
+  <option>Diseño de Sonrisa</option>
+  <option>Limpieza/Blanqueamiento</option>
+  <option>Ortodoncia</option>
+  <option>Consulta General</option>
+</select>
+
+<input type="text" id="idates" placeholder="Otra información"
+style="padding:12px;border-radius:8px;border:none;">
+
+<button type="submit" class="btn" style="margin-top:10px;">
+Solicitar Información
+</button>
+</form>
+
+</section>
+	
+	
+	
+<!-- FIN NUEVA SECCIÓN FORMULARIO DE CITA -->
+<!-- TURISMO DENTAL / PACIENTES INTERNACIONALES -->
+
+<section id="internacional">
+<h2 class="section-title">International Patients</h2>
+
+<p style="text-align:center;max-width:800px;margin:auto;">
+We offer fast and safe dental treatments for patients visiting Colombia.
+Our team coordinates your schedule so you can enjoy your trip while transforming your smile.
+</p>
+
+<div style="text-align:center;margin-top:30px;">
+<a class="btn" href="https://wa.me/573132725437">International Consultation</a>
+</div>
+
+<!-- FORMULARIO -->
+	<!-- FORMULARIO -->
+
+<form id="intl-form" style="
+  max-width:500px;
+  margin:40px auto 0 auto;
+  background:rgba(0,0,0,0.6);
+  padding:30px;
+  border-radius:12px;
+  border:1px solid #fff;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+">
+
+<input type="text" id="iname" placeholder="Full Name" required
+style="padding:12px;border-radius:8px;border:none;">
+
+<input type="email" id="iemail" placeholder="Email Address" required
+style="padding:12px;border-radius:8px;border:none;">
+
+<input type="tel" id="iphone" placeholder="WhatsApp Number (with country code)" required
+style="padding:12px;border-radius:8px;border:none;">
+
+<select id="itreatment" required
+style="padding:12px;border-radius:8px;border:none;">
+  <option value="">Treatment of Interest</option>
+  <option>Dental Implants</option>
+  <option>Smile Design / Veneers</option>
+  <option>Teeth Whitening</option>
+  <option>Orthodontics</option>
+  <option>General Consultation</option>
+</select>
+
+<input type="text" id="idates" placeholder="Estimated Travel Dates"
+style="padding:12px;border-radius:8px;border:none;">
+
+<button type="submit" class="btn" style="margin-top:10px;">
+Request Information
+</button>
+
+</form>
+
+</section>
+
+
+<!-- SCRIPT PARA ENVIAR A WHATSAPP -->
+
+<script>
+document.getElementById("intl-form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("iname").value;
+  const email = document.getElementById("iemail").value;
+  const phone = document.getElementById("iphone").value;
+  const treatment = document.getElementById("itreatment").value;
+  const dates = document.getElementById("idates").value;
+
+  const message =
+`International Patient Inquiry
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Treatment: ${treatment}
+Travel Dates: ${dates}`;
+
+  const url = "https://wa.me/573132725437?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+});
+</script>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+&copy; 2025 Clínica Odontológica Estética - Todos los derechos reservados.
+</footer>
+
+<!-- ================= BOTÓN WHATSAPP ================= -->
+
+<a href="https://wa.me/573132725437" target="_blank" class="whatsapp-float">
+<img src="WhatsApp_icon.png" style="width:60px;height:60px;">
+</a>
+
+<!-- ================= SCRIPTS ================= -->
+
+<script>
+
+// Animación secciones
+const sections=document.querySelectorAll('section');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');}
+  });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
+
+// Header scroll
+const header=document.querySelector('header');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>50){header.classList.add('scrolled');}
+  else{header.classList.remove('scrolled');}
+});
+	
+// ===== DATOS DE SERVICIOS =====
+
+const services = {
+
+  ortodoncia: {
+    title: "Ortodoncia Estética",
+    text: "Tratamiento para alinear los dientes mediante brackets estéticos o alineadores invisibles. Mejora la mordida, la función y la estética facial."
+  },
+
+  blanqueamiento: {
+    title: "Blanqueamiento Dental",
+    text: "Procedimiento profesional que elimina manchas y aclara varios tonos en una sola sesión, devolviendo luminosidad a la sonrisa."
+  },
+
+  diseno: {
+    title: "Diseño de Sonrisa",
+    text: "Transformación estética integral mediante carillas, contorneado dental y armonización facial para lograr una sonrisa perfecta."
+  }
+
+};
+
+// ===== FUNCIONAMIENTO MODAL =====
+
+const modal = document.getElementById("serviceModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalText = document.getElementById("modalText");
+
+document.querySelectorAll(".service-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const key = card.dataset.service;
+    modalTitle.textContent = services[key].title;
+    modalText.textContent = services[key].text;
+    modal.style.display="flex";
+  });
+});
+
+document.querySelector(".close").onclick=()=>{
+  modal.style.display="none";
+};
+
+window.onclick=(e)=>{
+  if(e.target==modal) modal.style.display="none";
+};
+
+</script>
+
+</body>
+</html>
