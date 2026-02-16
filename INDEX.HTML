@@ -34,33 +34,6 @@ body::before{
 
 /* ================= HEADER ================= */
 
-header{
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(8px);
-  padding:15px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #fff;
-  position:sticky;
-  top:0;
-  z-index:10;
-  transition:background .3s;
-}
-
-header.scrolled{background:rgba(0,0,0,0.9);}
-
-header h1{font-size:1.8rem;font-weight:700;color:#fff;}
-
-nav a{
-  color:#fff;
-  text-decoration:none;
-  margin:0 15px;
-  font-weight:600;
-  transition:color .3s;
-}
-
-nav a:hover{color:#ccc;}
 
 /* ================= HERO ================= */
 
@@ -247,28 +220,213 @@ footer{
   font-size:28px;
   cursor:pointer;
 }
+
+/*==========================================================MENU=============================================*/
+
+body{
+  padding-top:80px;
+}
+
+/* HEADER FIJO */
+
+.main-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background:#111;
+  padding:12px 5%;
+  z-index:3000;
+}
+
+.nav-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo img{
+  width:120px;
+}
+
+/* Desktop nav */
+
+.desktop-nav{
+  display:flex;
+  gap:25px;
+}
+
+.desktop-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* Hamburger */
+
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:75%;
+  height:100vh;
+  background:#111;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  transition:.35s;
+  z-index:4000;
+}
+
+.mobile-menu a{
+  color:#fff;
+  text-decoration:none;
+  font-size:1.3rem;
+}
+
+.mobile-menu.active{
+  right:0;
+}
+
+.close-menu{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:28px;
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* Overlay */
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:3500;
+}
+
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .desktop-nav{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+}
 	
+	/*===================================formulario====================================*/
+	
+	/* ===== FORMULARIO CONTACTO ===== */
+
+.contact-form{
+  max-width:650px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.contact-form input,
+.contact-form select{
+  padding:16px;
+  border-radius:10px;
+}
+
+.contact-form button{
+  grid-column:span 2;
+  margin-top:10px;
+}
+
+/* ===== RESPONSIVE MÓVIL ===== */
+
+@media (max-width:700px){
+
+  .contact-form{
+    grid-template-columns:1fr;
+  }
+
+  .contact-form button{
+    grid-column:span 1;
+  }
+
+}
+	.contact-info{
+  padding:0 15px;
+}
 </style>
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
+<header class="main-header">
 
-<header>
-<h1>Centro de Diseño Dental SM.</h1>
+  <div class="nav-container">
 
-<nav>
-<a href="#nosotros">Nosotros</a>
-<a href="#servicios">Servicios</a>
-<a href="#antes-despues">Antes y Después</a>
-<a href="#galeria">Galería</a>
-<a href="#sedes">Sedes</a>
-<a href="#testimonios">Testimonios</a>
-<a href="#contacto">Contacto</a>
-</nav>
+    <div class="logo">
+      <a href="#inicio">
+        <img src="firma y logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <nav class="desktop-nav">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#antes-despues">Procesos</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#internacional">Internacional</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+  </div>
+
 </header>
 
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenu">✕</button>
+
+  <a href="#nosotros">Nosotros</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#antes-despues">Procesos</a>
+  <a href="#testimonios">Testimonios</a>
+  <a href="#galeria">Galería</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#internacional">Internacional</a>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
 <!-- ================= HERO ================= -->
 
 <div class="hero">
@@ -450,13 +608,7 @@ Consultar por WhatsApp
 <p>Protocolos de bioseguridad certificados</p>
 </div>
 
-<form id="formulario" style="
-max-width:650px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-">
+<form id="formulario">
 
 <input type="text" id="iname" placeholder="Nombre Completo" required
 style="padding:12px;border-radius:8px;border:none;">
@@ -549,10 +701,49 @@ Request Information
 
 </section>
 
+<!-- ================= FOOTER ================= -->
 
-<!-- SCRIPT PARA ENVIAR A WHATSAPP -->
+<footer>
+&copy; 2025 Clínica Odontológica Estética - Todos los derechos reservados.
+</footer>
+
+<!-- ================= BOTÓN WHATSAPP ================= -->
+
+<a href="https://wa.me/573132725437" target="_blank" class="whatsapp-float">
+<img src="WhatsApp_icon.png" style="width:60px;height:60px;">
+</a>
+
+<!-- ================= SCRIPTS ================= -->
 
 <script>
+//menu=================================================================================================
+	
+(function(){
+
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
+  const closeBtn = document.getElementById("closeMenu");
+  const overlay = document.getElementById("menuOverlay");
+
+  function openMenu(){
+    menu.classList.add("active");
+    overlay.classList.add("active");
+  }
+
+  function closeMenu(){
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+
+  toggle.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+
+})();
+	
+	
+	// wsp=================================================================================================
+
 document.getElementById("intl-form").addEventListener("submit", function(e){
   e.preventDefault();
 
@@ -575,23 +766,6 @@ Travel Dates: ${dates}`;
 
   window.open(url, "_blank");
 });
-</script>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-&copy; 2025 Clínica Odontológica Estética - Todos los derechos reservados.
-</footer>
-
-<!-- ================= BOTÓN WHATSAPP ================= -->
-
-<a href="https://wa.me/573132725437" target="_blank" class="whatsapp-float">
-<img src="WhatsApp_icon.png" style="width:60px;height:60px;">
-</a>
-
-<!-- ================= SCRIPTS ================= -->
-
-<script>
 
 // Animación secciones
 const sections=document.querySelectorAll('section');
